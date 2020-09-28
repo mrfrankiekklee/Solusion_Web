@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/webfonts/fontawesome-all.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <title> Solusion </title>
+</head>
+
+<body>
+    <div class="limiter">
+        <ul>
+            <li><a href="/classroom">Solusion</a></li>
+            <li><a href="/classroom">Classroom</a></li>
+            <li style="float:right"><a href="/logout">Logout</a></li>
+        </ul>
+        <div class="container">
+
+            <div class="wrapper_CClass">
+                {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button> {{ message }}
+                </div>
+                {% endfor %} {% endif %} {% endwith %} {% block body %}{% endblock %}
+                <h5 class="modal-title textfont" id="classroomModalLabel"> Classrooms</h5>
+
+
+                {% for classroom in classrooms %}
+
+
+                <div class="card text-center borderclassroom">
+                    <div class="card-header">
+                        <div class="row buttontoright">
+                            <form method="POST" action="{{url_for('deleteClassroom', classroomid=classroom.classroomID)}}">
+                                <button type="submit" class="close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                            </form>
+
+                        </div>
+                        <div class="col">
+                            Year {{classroom.Year}}
+                        </div>
+                        <!--   <div class="col-1">
+                            <i class="far fa-edit iconSize hand_pointer" data-toggle="modal" data-target="#classroomModal"></i>
+                        </div> -->
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{classroom.classroomName}}</h5>
+
+                        <p class="card-text">{{classroom.classroomNotes}}</p>
+                        <a href="{{url_for('experiments',classroomid=classroom.classroomID)}}" class="btn btn-primary">Enter Classroom</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Created On: {{classroom.createdDate}}
+                    </div>
+                </div>
+
+                <!--       <div class="row groove" name="classroomID" value="{{classroom.classroomID}}">
+
+                    <a class="col" href="{{url_for('experiments',classroomid=classroom.classroomID)}}">
+                        <div class="col text-margin ">
+                            <h6>{{classroom.classroomName}}</h6>
+                            Year {{classroom.Year}} <br> {{classroom.classroomNotes}}
+                        </div>
+                    </a>
+
+                    <div class="col-1">
+                        <i class="far fa-edit iconSize hand_pointer" data-toggle="modal" data-target="#classroomModal"></i>
+                    </div>
+                    <div class="col-1">
+                        <form method="POST" action="{{url_for('deleteClassroom', classroomid=classroom.classroomID)}}">
+                            <button type="submit" class="close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        </form>
+
+                    </div>
+
+                </div> -->
+
+                {% endfor %}
+
+
+                <!-- Modal content -->
+                <div class="modal fade" id="classroomModal" tabindex="-1" role="dialog" aria-labelledby="classroomModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <form method="POST" action="/classroom">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="classroomModalLabel">Create Classroom</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label class="col-form-label">Classroom Name:</label>
+                                        <input type="text" class="form-control" name="classroomName" value="{{request.form.classroomName}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label">Classroom Notes:</label>
+                                        <textarea class="form-control" id="message-text" name="classroomNotes" value="{{request.form.classroomNotes}}"></textarea>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Year:</label>
+                                                <select class="form-control" id="sel1" name="year">
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                                </select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                                    <button class="btn btn-primary" type="submit">Save</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Modal end here -->
+                <div class="card text-center borderclassroom">
+                    <div class="card-body">
+
+                        <label class="label hand_pointer textfont" data-toggle="modal" data-target="#classroomModal">+Create New Classroom</label>
+                    </div>
+                </div>
+
+
+
+                <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            Are you sure you want to delete?
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No </button>
+                            <form method="POST" action="/deleteClassroom">
+
+                                <button type="submit" class="btn btn-primary"> Yes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+
+</html>
+
+
+<!-- The Modal -->

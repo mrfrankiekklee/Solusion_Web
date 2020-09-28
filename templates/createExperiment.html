@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/webfonts/fontawesome-all.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <title> Solusion </title>
+</head>
+
+<body>
+    <div class="limiter">
+        <!-- top bar -->
+        <ul>
+            <li><a href="#classroom">Solusion</a></li>
+            <li><a href="createClassroom.html">Classroom</a></li>
+            <li style="float:right"><a href="/logout">Logout</a></li>
+        </ul>
+        <!-- top bar end -->
+        <div class="container">
+
+            <div class="wrapper_CClass">
+                {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button> {{ message }}
+                </div>
+                {% endfor %} {% endif %} {% endwith %} {% block body %}{% endblock %}
+                <h5 class="modal-title textfont" id="experimentsModalLabel"> Experiments</h5>
+                {% for experiment in experiments %}
+
+
+                <div class="card text-center borderclassroom">
+                    <div class="card-header">
+                        <div class="row buttontoright">
+                            <form method="POST" action="{{url_for('deleteExperiment', experimentid=experiment.experimentID, classroomid=experiment.classroomID)}}">
+                                <button type="submit" class="close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                            </form>
+
+                        </div>
+                        <div class="col">
+                            Code: {{experiment.verificationCode}}
+                        </div>
+                        <!--    <div class="col-1">
+                        <i class="far fa-edit iconSize hand_pointer" data-toggle="modal" data-target="#experimentModal"></i>
+                    </div> -->
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{experiment.experimentName}}</h5>
+
+                        <p class="card-text">{{experiment.experimentNotes}}</p>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Created On: {{experiment.createDate}}
+                    </div>
+                </div>
+                {%endfor%}
+
+
+
+                <div class="card text-center borderclassroom">
+                    <div class="card-body">
+
+                        <label class="label hand_pointer textfont" data-toggle="modal" data-target="#experimentModal">+Create New Experiment</label>
+                    </div>
+                </div>
+
+
+
+                <div class="modal fade bd-example-modal-lg" id="experimentModal" tabindex="-1" role="dialog" aria-labelledby="ExperimentModalLabel" aria-hidden="true">
+
+
+                    <div class="modal-dialog modal-lg" role="document">
+                        <form method="POST" action="{{url_for('experiments', classroomid = classroomid)}}">
+                            <div class="modal-content">
+                                <div class="modal-header textfont">
+                                    <h5 class="modal-title" id="ExperimentModalLabel">Create Experiment</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+
+                                </div>
+                                <div class="modal-body myBox">
+
+                                    <div class="form-group">
+                                        <h5 class="col">Experiment Name:</h5>
+                                        <input type="text" class="form-control" name="experimentName" value="{{request.form.experimentName}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <h5 class="col">Experiment Notes:</h5>
+                                        <textarea class="form-control" id="message-text" name="experimentNote" value="{{request.form.experimentNote}}"></textarea>
+                                    </div>
+
+                                    <!-- Mixing element  -->
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5>Mixing chemical element:</h5>
+                                        </div>
+                                        <!-- Rounded switch
+                                        <div class="col">
+                                            <label class="switch">
+                                                            <input type="checkbox">
+                                                            <span class="slider round"></span>
+                                                </label>
+                                        </div>-->
+                                    </div>
+
+                                    <!-- Testing Start from here-->
+                                    <div id="containerMix">
+                                        <div class="grooveExModal2">
+                                            <table id="myTable" class=" table order-list">
+                                                <thead>
+                                                    <tr>
+                                                        <td>Element A</td>
+                                                        <td> Type</td>
+                                                        <td>Element B</td>
+                                                        <td> Type</td>
+                                                        <td>Reaction</td>
+                                                        <td>Reverse Reaction</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="col-sm-2">
+                                                            <select class="form-control" id="sel1" name="mElementA">
+                                                                <option value="water">water</option>
+                                                                <option value="nitrogen">nitrogen</option>
+                                                                <option value="potassium">potassium</option>
+                                                                <option value=cesium>cesium</option>
+                                                                </select>
+                                                        </td>
+                                                        <td class="col-sm-3">
+
+                                                            <select class="form-control" id="sel1" name="mElementAType">
+                                                                <option value="solid">solid</option>
+                                                                <option value="liquid">liquid</option>
+                                                                </select>
+                                                        </td>
+                                                        <td class="col-sm-2">
+                                                            <select class="form-control" id="sel1" name="mElementB">
+                                                                <option value="water">water</option>
+                                                                <option value="nitrogen">nitrogen</option>
+                                                                <option value="potassium">potassium</option>
+                                                                <option value=cesium>cesium</option>
+                                                                </select>
+                                                        </td>
+                                                        <td class="col-sm-2">
+
+                                                            <select class="form-control" id="sel1" name="mElementBType">
+                                                                <option value="solid">solid</option>
+                                                                <option value="liquid">liquid</option>
+                                                                </select>
+                                                        </td>
+                                                        <td class="col-sm-2">
+                                                            <select class="form-control" id="sel1" name="mReaction">
+                                                                <option value="smoke">smoke</option>
+                                                                <option value="white explosion">white explosion</option>
+                                                                <option value="sparks">sparks</option>
+                                                                <option value="4">4</option>
+                                                                </select>
+                                                        </td>
+                                                        <td class="col-sm-2">
+                                                            <select class="form-control" id="sel1" name="mReverseReaction">
+                                                                <option value="smoke">smoke</option>
+                                                                <option value="white explosion">white explosion</option>
+                                                                <option value="sparks">sparks</option>
+                                                                <option value="4">4</option>
+                                                                </select>
+                                                        </td>
+                                                        <td class="col-sm-3"><a class="deleteRow"></a>
+
+                                                        </td>
+                                                    </tr>
+
+
+                                                </tbody>
+                                                <!--   <tfoot>
+                                                    <tr>
+                                                        <td colspan="3" style="text-align: left;">
+                                                            <input type="button" class="btn btn-primary addbtn" id="addrow" value="Add Row" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                    </tr>
+                                                </tfoot>  -->
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- Testing End from here-->
+
+
+
+                                    <!-- Microscope start -->
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5>Microscope experiment:</h5>
+                                        </div>
+                                        <!-- Rounded switch -->
+
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <h6>Element A:</h6>
+                                                <select class="form-control" id="sel1" name="sElement">
+                                                                <option value="None">None</option>
+                                                                <option value="NH3">NH3</option>
+                                                                <option value="O2">O2</option>
+                                                                <option value="4">MH4</option>
+                                                                </select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <select class="form-control" id="sel1" name="sElement1">
+                                                                <option value="None">None</option>
+                                                                <option value="NH3">NH3</option>
+                                                                <option value="O2">O2</option>
+                                                                <option value="4">MH4</option>
+                                                                </select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <select class="form-control" id="sel1" name="sElement2">
+                                                                <option value="None">None</option>
+                                                                <option value="NH3">NH3</option>
+                                                                <option value="O2">O2</option>
+                                                                <option value="4">MH4</option>
+                                                                </select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <select class="form-control" id="sel1" name="sElement3">
+                                                                <option value="None">None</option>
+                                                                <option value="NH3">NH3</option>
+                                                                <option value="O2">O2</option>
+                                                                <option value="4">MH4</option>
+                                                                </select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <select class="form-control" id="sel1" name="sElement4">
+                                                                <option value="None">None</option>
+                                                                <option value="NH3">NH3</option>
+                                                                <option value="O2">O2</option>
+                                                                <option value="4">4</option>
+                                                                </select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <select class="form-control" id="sel1" name="sElement5">
+                                                                <option value="None">None</option>
+                                                                <option value="NH3">NH3</option>
+                                                                <option value="O2">O2</option>
+                                                                <option value="4">MH4</option>
+                                                                </select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <select class="form-control" id="sel1" name="sElement6">
+                                                                <option value="None">None</option>
+                                                                <option value="NH3">NH3</option>
+                                                                <option value="O2">O2</option>
+                                                                <option value="4">MH4</option>
+                                                                </select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                    <!-- Microscope end -->
+
+                                    <!-- Bunsen Burner -->
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5>Heating chemical element:</h5>
+                                        </div>
+
+                                    </div>
+                                    <div id="HeatContainer">
+                                        <div class="grooveExModal2">
+                                            <table id="mytable2" class="table order-list">
+                                                <thead>
+                                                    <tr>
+                                                        <td>ElementA</td>
+                                                        <td>Element Type</td>
+                                                        <td>Heat Level</td>
+                                                        <td>Reaction</td>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="col-sm-3">
+
+                                                            <select class="form-control" id="sel1" name="hElement">
+                                                                <option value="water">water</option>
+                                                                <option value="nitrogen">nitrogen</option>
+                                                                <option value="potassium">potassium</option>
+                                                                <option value="iron">iron</option>
+                                                                <option value="4">4</option>
+                                                                </select>
+                                                        </td>
+                                                        <td class="col-sm-3">
+
+                                                            <select class="form-control" id="sel1" name="hType">
+                                                                <option value="solid">solid</option>
+                                                                <option value="liquid">liquid</option>
+                                                                </select>
+                                                        </td>
+                                                        <td class="col-sm-3">
+
+                                                            <select class="form-control" id="sel1" name="hTime">
+                                                                <option value="high">High</option>
+                                                                <option value="low">Low</option>
+                                                                </select>
+                                                        </td>
+                                                        <td class="col-sm-3">
+                                                            <select class="form-control" id="sel1" name="hReaction">
+                                                                <option value="smoke">smoke</option>
+                                                                <option value="white explosion">white explosion</option>
+                                                                <option value="sparks">sparks</option>
+                                                                <option value="4">4</option>
+                                                                </select>
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- Bunsen Burner end -->
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                                    <button class="btn btn-primary" type="submit">Save</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Modal content -->
+
+        <!-- Modal end here -->
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+
+</html>
+
+
+<!-- The Modal -->

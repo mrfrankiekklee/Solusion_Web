@@ -1,0 +1,434 @@
+.logo {
+    margin-left: 30px;
+}
+
+.limiter {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background: #f1f1f1;
+}
+
+.wrapper {
+    width: 390px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 77px 55px 33px 55px;
+
+    box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+    -o-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+    -ms-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper_CClass {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 77px 55px 33px 55px;
+    margin-bottom: auto;
+
+    box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+    -o-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+    -ms-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.myBox {
+    border: none;
+    padding: 5px;
+    font: 24px/36px sans-serif;
+    width: 450px;
+    height: 500px;
+    overflow: scroll;
+}
+
+.buttontoright {
+    float: right !important;
+}
+
+
+borderclassroom {
+    margin-top: 20px !important;
+    border-style: groove;
+    border-radius: 25px;
+}
+
+.groove {
+    border-style: groove;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    border: 5px solid #EF9A9A;
+    /* Set up Border */
+}
+
+.grooveExModal2 {
+    border-style: groove;
+    width: 100%;
+    height: 20%;
+    margin-bottom: 10px;
+    margin-left: 0.5% !important;
+    border-radius: 4px;
+    padding: 6px;
+
+
+}
+
+.grooveExModal {
+    border-style: groove;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+    margin-left: 0.5% !important;
+    border-radius: 4px;
+    padding: 6px;
+
+
+}
+
+.btnmargin {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 70px;
+}
+
+
+/* The Modal (background) */
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+    height: 800px;
+}
+
+
+
+/* The Close Button */
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+
+/* The search field */
+
+#myInput {
+    border-box: box-sizing;
+    background-image: url('searchicon.png');
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 14px 20px 12px 45px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+/* The search field when it gets focus/clicked on */
+
+#myInput:focus {
+    /* outline: 3px solid #ddd; */
+}
+
+/* The container <div> - needed to position the dropdown content */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+
+.dropdown-content {
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: 230px;
+    border: 1px solid #ddd;
+    z-index: 1;
+    display: none;
+}
+
+/* Links inside the dropdown */
+
+.dropdown-content a:focus {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+}
+
+/* Change color of dropdown links on hover */
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+
+.show {
+    display: block;
+}
+
+
+.myBox {
+    border: groove;
+    padding: 5px;
+    font: 24px/36px sans-serif;
+    width: 100%;
+    height: 80%;
+    overflow: scroll;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #697786;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: all 150ms linear;
+}
+
+li a:hover {
+    background: darken($red, 1.5%);
+    border: 1px solid rgba(#000, .05);
+    box-shadow: 1px 1px 2px rgba(#fff, .2);
+    color: lighten($red, 18%);
+    text-decoration: none;
+    text-shadow: -1px -1px 0 darken($red, 9.5%);
+    transition: all 250ms linear;
+}
+
+
+
+.experimentModal {
+    background-color: #fefefe;
+    margin-left: 10% !important;
+
+    margin-right: !important;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    height: 800px;
+    width: 80% !important;
+}
+
+
+#email {
+    background-image: url(../images/email.png);
+    background-repeat: no-repeat;
+    background-position: 6px;
+    border: 1px solid #DADADA;
+    margin-top: 10px;
+    padding-left: 35px;
+    width: 310px;
+    height: 30px;
+    font-size: 14px;
+    box-shadow: 0 0 10px;
+
+    -moz-box-shadow: 0 0 10px;
+    /* For Mozilla Web Browser*/
+    border-radius: 5px;
+
+    -moz-border-radius: 5px
+    /* For Mozilla Web Browser*/
+}
+
+.icon_position {
+    top: 20 px;
+    left: 25 px;
+    position: absolute;
+    padding-top: 10px;
+    padding-left: 10px;
+
+
+}
+
+.form_position {
+    position: relative
+}
+
+.iconSize {
+    width: 24px !important;
+    height: 24px !important;
+}
+
+.text-margin {
+    padding: 30px;
+}
+
+
+.createClassrooom {
+    margin-left: 33%;
+    margin-top: 55px;
+    padding: -5px;
+}
+
+.experiment_symbol {
+    text-align: center;
+    margin-top: 5%
+}
+
+
+/* the switch button */
+
+/* The switch - the box around the slider */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 55px;
+    height: 28px;
+    margin-left: 80%
+}
+
+/* Hide default HTML checkbox */
+
+.switch input {
+    display: none;
+}
+
+/* The slider */
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider.round {
+    background-color: #2196F3;
+}
+
+input:focus + .slider.round {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+
+/* the switch button end */
+
+.modal-ku {
+    width: 750px;
+    margin: auto;
+}
+
+
+/* cursor pointer */
+
+.hand_pointer {
+    cursor: pointer;
+}
+
+/* text font */
+
+.textfont {
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: all 150ms linear;
+}
